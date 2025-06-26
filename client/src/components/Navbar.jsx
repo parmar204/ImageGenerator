@@ -8,7 +8,7 @@ const Navbar = () => {
     const {user, setUser, navigate} = useAppContext()
 
   return (
-    <div className='flex items-center justify-between py-4'>
+    <nav className='flex items-center justify-between py-4'>
         <Link to={'/'}><img src={assets.logo} alt="logo" className='w-28 sm:w-32 lg:w-40' /></Link>
         <div>
             {
@@ -32,7 +32,7 @@ const Navbar = () => {
                 </div>
             }
         </div>
-    </div>
+    </nav>
   )
 }
 
