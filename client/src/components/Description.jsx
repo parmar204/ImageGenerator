@@ -1,9 +1,10 @@
 import React from 'react'
 import { assets } from '../assets/assets'
+import { motion } from 'framer-motion'
 
 const Description = () => {
   return (
-    <section className='flex flex-col items-center justify-center my-24 p-6 md:px-28'>
+    <motion.section initial={{opacity: 0.2, y: 100}} transition={{duration: 1}} whileInView={{opacity: 1, y: 0}} viewport={{once: true}} className='flex flex-col items-center justify-center my-24 p-6 md:px-28'>
         <h1 className='text-3xl sm:text-4xl font-semibold mb-2'>Create Ai Image</h1>
         <p className='text-gray-500 mb-8'>Turn your Imagination into visuals</p>
 
@@ -15,7 +16,7 @@ const Description = () => {
                 <p className='text-gray-600'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab obcaecati harum expedita quo ut voluptatem saepe distinctio fugiat porro consequatur! Quae, sequi placeat quasi nobis autem velit, quos nisi alias, tenetur delectus fugiat repudiandae iusto ad animi. Dolorem, quas explicabo?</p>
             </div>
         </div>
-    </section>
+    </motion.section>
   )
 }
 

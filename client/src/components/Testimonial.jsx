@@ -1,9 +1,10 @@
 import React from 'react'
 import { assets, testimonialsData } from "../assets/assets";
+import { motion } from 'framer-motion'
 
 const Testimonial = () => {
   return (
-    <section className='flex flex-col items-center justify-center my-20 p-12'>
+    <motion.section initial={{opacity: 0.2, y: 100}} transition={{duration: 1}} whileInView={{opacity: 1, y: 0}} viewport={{once: true}} className='flex flex-col items-center justify-center my-20 p-12'>
         <h1 className='text-3xl sm:text-4xl font-semibold mb-2'>Customer Testimonial</h1>
         <p className='text-gray-500 mb-12'>What are users are saying</p>
 
@@ -24,7 +25,7 @@ const Testimonial = () => {
                 </div>
             ))}
         </div>
-    </section>
+    </motion.section>
   )
 }
 
