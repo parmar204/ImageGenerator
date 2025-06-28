@@ -10,9 +10,7 @@ require('./config/db')()
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('Express server is running!');
-});
+app.use('/api/user', require('./routes/userRoutes'))
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
