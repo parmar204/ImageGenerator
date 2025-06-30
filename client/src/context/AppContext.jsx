@@ -46,7 +46,7 @@ export const AppProvider = ({children}) => {
             } else {
                 toast.error(data.message)
                 loadCreditData()
-                if (data.creditBalance === 0) {
+                if (data.creditBalance <= 0) {
                     navigate('/buy-credit')
                 }
             }

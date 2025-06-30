@@ -12,7 +12,7 @@ const generateImage = async (req, res) => {
             return res.status(400).json({success: false, message: 'Missing details'})
         }
         if (user.creditBalance <= 0) {
-            return res.status(400).json({success: false, message: 'No Credit Balance', creditBalance: user.creditBalance})
+            return res.status(200).json({success: false, message: 'No Credit Balance', creditBalance: user.creditBalance})
         }
 
         const imageData = await main(prompt)
@@ -37,7 +37,7 @@ const generateImage = async (req, res) => {
                 creditBalance: user.creditBalance
             })
         } else {
-            res.status(500).json({ error: 'Failed to generate image from AI.' });
+            res.status(500).json({ success: false, error: 'Failed to generate image from AI.' });
         }
     } catch (error) {
         console.error(error)
