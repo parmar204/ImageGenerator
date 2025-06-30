@@ -13,6 +13,15 @@ export const AppProvider = ({children}) => {
     const [token, setToken] = useState(localStorage.getItem('token') || null)
     const [credit, setCredit] = useState(false)
 
+    useEffect(() => {
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `${token}`
+            loadCreditData()
+        } else {
+            delete axios.defaults.headers.common['Authorization']
+        }
+    }, [token])
+
     const loadCreditData = async () => {
         try {
             const {data} = await axios.get('/api/user/credits')
@@ -33,15 +42,6 @@ export const AppProvider = ({children}) => {
         setToken(null)
         setUser(null)
     }
-
-    useEffect(() => {
-        if (token) {
-            axios.defaults.headers.common['Authorization'] = `${token}`
-            loadCreditData()
-        } else {
-            delete axios.defaults.headers.common['Authorization']
-        }
-    }, [token])
 
     return (
         <AppContext.Provider value={{user, setUser, navigate, showLogin, setShowLogin, token, setToken, credit, setCredit, loadCreditData, logout}}>{children}</AppContext.Provider>
