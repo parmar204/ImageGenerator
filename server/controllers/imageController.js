@@ -5,7 +5,8 @@ const fs = require('fs');
 
 const generateImage = async (req, res) => {
     try {
-        const {userId, prompt} = req.body
+        const {prompt} = req.body
+        const userId = req.userId
         const user = await User.findById(userId)
         if (!user || !prompt) {
             return res.status(400).json({success: false, message: 'Missing details'})
@@ -32,7 +33,7 @@ const generateImage = async (req, res) => {
             res.status(200).json({
                 success: true,
                 message: 'Image Generated Successfully',
-                imageUrl: `/uploads/${filename}`,
+                imageUrl: `${req.protocol}://${req.get('host')}/uploads/${filename}`,
                 creditBalance: user.creditBalance
             })
         } else {

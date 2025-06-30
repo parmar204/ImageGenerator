@@ -37,6 +37,25 @@ export const AppProvider = ({children}) => {
         }
     }
 
+    const generateImage = async (prompt) => {
+        try {
+            const {data} = await axios.post('api/user/generate-image', {prompt})
+            if (data.success) {
+                loadCreditData()
+                return data.imageUrl
+            } else {
+                toast.error(data.message)
+                loadCreditData()
+                if (data.creditBalance === 0) {
+                    navigate('/buy-credit')
+                }
+            }
+        } catch (error) {
+            console.log(error)
+            toast.error("failed to generate image")
+        }
+    }
+
     const logout = () => {
         localStorage.removeItem('token')
         setToken(null)
@@ -44,7 +63,7 @@ export const AppProvider = ({children}) => {
     }
 
     return (
-        <AppContext.Provider value={{user, setUser, navigate, showLogin, setShowLogin, token, setToken, credit, setCredit, loadCreditData, logout}}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{user, setUser, navigate, showLogin, setShowLogin, token, setToken, credit, setCredit, loadCreditData, logout, generateImage}}>{children}</AppContext.Provider>
     )
 }
 

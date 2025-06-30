@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
 import { motion } from 'framer-motion'
+import { useAppContext } from '../context/AppContext'
+import toast from 'react-hot-toast'
 
 const Result = () => {
 
@@ -9,8 +11,23 @@ const Result = () => {
   const [loading, setLoading] = useState(false)
   const [input, setinput] = useState('')
 
+  const { generateImage } = useAppContext()
+
   const onSubmitHandler = async (e) => {
     e.preventDefault()
+    setLoading(true)
+    if (!input.trim()) {
+      toast.error("Please enter a prompt")
+      setLoading(false)
+      return
+    } else {
+      const imageUrl = await generateImage(input)
+      if (imageUrl) {
+        setIsImageLoaded(true)
+        setImage(imageUrl)
+      }
+    }
+    setLoading(false)
   }
 
   return (
