@@ -9,10 +9,10 @@ const generateImage = async (req, res) => {
         const userId = req.userId
         const user = await User.findById(userId)
         if (!user || !prompt) {
-            return res.status(400).json({success: false, message: 'Missing details'})
+            return res.json({success: false, message: 'Missing details'})
         }
         if (user.creditBalance <= 0) {
-            return res.status(200).json({success: false, message: 'No Credit Balance', creditBalance: user.creditBalance})
+            return res.json({success: false, message: 'No Credit Balance', creditBalance: user.creditBalance})
         }
 
         const imageData = await generateImageFromText(prompt)
@@ -50,14 +50,14 @@ const modifyImage = async (req, res) => {
         const prompt = req.body.prompt; 
         const imageFile = req.file;
         if (!prompt || !imageFile) {
-            return res.status(400).send('Missing prompt or image file.');
+            return res.json({success: false, message: 'Missing prompt or image file.'});
         }
 
         const userId = req.userId
 
         const user = await User.findById(userId)
         if (!user) {
-            return res.status(404).json({success: false, message: 'User not found'})
+            return res.json({success: false, message: 'User not found'})
         }
 
         if (user.creditBalance <= 0) {

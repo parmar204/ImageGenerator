@@ -84,7 +84,7 @@ const Description = () => {
       onClick={() => navigate('/modify')}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 1.2 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
         viewport={{ once: true }}
         className="mt-16 px-8 py-4 bg-blue-600 text-white font-bold text-lg rounded-full shadow-lg hover:bg-blue-700 hover:scale-105 transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-blue-300 active:bg-blue-800 cursor-pointer"
       >
