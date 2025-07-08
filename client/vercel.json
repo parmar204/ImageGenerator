@@ -4,5 +4,7 @@
         "source": "/(.*)",
         "destination": "/"
         }
-    ]
+    ],
+    "installCommand": "npm install --legacy-peer-deps --prefix client && npm install --legacy-peer-deps --prefix server",
+    "buildCommand": "npm run build --prefix client"
 }
