@@ -2,7 +2,9 @@ const express = require('express')
 const { registerUser, loginUser, userCredits, paymentRazorpay, verifyrazorpay } = require('../controllers/userController')
 const userAuth = require('../middlewares/auth')
 const { generateImage, modifyImage } = require('../controllers/imageController')
-const upload = require('../middlewares/imageUpload')
+const multer = require('multer')
+const storage = multer.memoryStorage()
+const upload = multer({storage})
 
 const userRouter = express.Router()
 

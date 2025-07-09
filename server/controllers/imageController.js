@@ -2,6 +2,7 @@ const { generateImageFromText, changesInImage } = require('../config/generateIma
 const User = require('../models/userModel')
 const path = require('path');
 const cloudinary = require('../config/cloudinary')
+const fs = require('fs')
 
 const generateImage = async (req, res) => {
   try {
@@ -64,7 +65,7 @@ const modifyImage = async (req, res) => {
       return res.status(200).json({ success: false, message: 'No credit balance', creditBalance: user.creditBalance });
     }
 
-    const imageBuffer = fs.readFileSync(imageFile.path);
+    const imageBuffer = imageFile.buffer
     const mimeType = imageFile.mimetype;
 
     const modifiedImage = await changesInImage(prompt, imageBuffer, mimeType);
