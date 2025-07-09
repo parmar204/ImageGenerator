@@ -100,7 +100,7 @@ RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 
 # Frontend URL
 FRONTEND_URL=http://localhost:5173
-
+```
 
 💳 Credit System
 Each image generation/modification = 1 credit
