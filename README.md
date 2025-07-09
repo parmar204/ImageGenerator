@@ -77,7 +77,9 @@ server/
 ├── server.js
 └── .env
 
-## 📦 Environment Variables
+---
+
+## 📦 Environment Variables For Backend
 
 Create a `.env` file in `/server` directory with:
 
@@ -101,6 +103,18 @@ RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 # Frontend URL
 FRONTEND_URL=http://localhost:5173
 ```
+---
+
+## 📦 Environment Variables For Frontend
+
+Create a `.env` file in `/client` directory with:
+
+``` 
+VITE_BACKEND_URI=http:localhost:8000
+VITE_RAZORPAY_KEY_ID=your_razorpay_key_id
+```
+
+---
 
 💳 Credit System
 Each image generation/modification = 1 credit
@@ -109,6 +123,8 @@ On signup, user receives 5 free credits
 
 If credits are exhausted, user can buy credits via Razorpay
 
+---
+
 🛒 Razorpay Integration
 Integrated Razorpay Checkout for purchasing credits
 
@@ -116,8 +132,29 @@ User selects credit package (e.g., 10 credits = ₹50)
 
 After successful payment, credits are added to user’s account
 
+---
+
 📤 Cloudinary
 All generated and modified images are uploaded directly to Cloudinary and returned via secure URLs. No local file storage is used (making this compatible with Vercel, Render, Railway, etc.).
 
+---
+
 🙋‍♂️ Author
 Made with ❤️ by Govind Parmar
+
+---
+
+🤝 Contributing
+Contributions are welcome! If you have suggestions for improvements, new features, or bug fixes, please follow these steps:
+
+Fork the repository.
+
+Create a new branch (git checkout -b feature/your-feature-name).
+
+Make your changes.
+
+Commit your changes (git commit -m 'Add new feature').
+
+Push to the branch (git push origin feature/your-feature-name).
+
+Open a Pull Request.
