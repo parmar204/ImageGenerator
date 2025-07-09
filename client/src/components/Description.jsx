@@ -5,7 +5,7 @@ import { useAppContext } from '../context/AppContext'
 
 const Description = () => {
 
-  const {navigate} = useAppContext()
+  const {navigate, token, setShowLogin} = useAppContext()
   return (
     <motion.section initial={{opacity: 0.2, y: 100}} transition={{duration: 1}} whileInView={{opacity: 1, y: 0}} viewport={{once: true, amount: 0.5}} className='flex flex-col items-center justify-center py-16 px-4 bg-gray-50 min-h-screen'>
         <motion.h1
@@ -81,7 +81,7 @@ const Description = () => {
       </div>
 
       <motion.button
-      onClick={() => navigate('/modify')}
+      onClick={() => token ? navigate('/modify') : setShowLogin(true)}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2 }}
