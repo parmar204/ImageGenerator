@@ -16,6 +16,9 @@ app.use(cors({
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
+app.get('/', (req, res) => {
+    res.send("server started")
+})
 app.use('/api/user', require('./routes/userRoutes'))
 
 app.listen(PORT, () => {
