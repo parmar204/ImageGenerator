@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8000;
 require('./config/db')()
 
 app.use(cors({
-    origin: "https://image-generator-beta-five.vercel.app/",
+    origin: process.env.FRONTEN_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true
 }));
