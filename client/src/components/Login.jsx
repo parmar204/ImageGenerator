@@ -12,9 +12,11 @@ const Login = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [loading, setLoading] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setLoading(true)
         try {
             if (state === "Login") {
                 const { data } = await axios.post('/api/user/login', {
@@ -44,6 +46,8 @@ const Login = () => {
             }
         } catch (error) {
             toast.error(error.message)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -76,7 +80,20 @@ const Login = () => {
 
             <p className='text-sm text-blue-600 my-4 cursor-pointer'>forget password?</p>
 
-            <button className='w-full bg-blue-600 text-white py-2 rounded-full'>{state === "Login" ? "Login" : "Create Account"}</button>
+            <button
+                className='w-full bg-blue-600 text-white py-2 rounded-full flex items-center justify-center gap-2 disabled:opacity-60'
+                disabled={loading}
+            >
+                {loading ? (
+                    <>
+                    <span className="loader"></span>
+                    Processing...
+                    </>
+                ) : (
+                    state === "Login" ? "Login" : "Create Account"
+            )}
+            </button>
+
 
             {state === "Login" ? 
             (<p onClick={() => setstate("Sign Up")} className='mt-4 text-center'>Don't have an account? <span className='text-blue-600 cursor-pointer'>Sign Up</span></p>) : 
